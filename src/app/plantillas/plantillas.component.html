@@ -1,0 +1,127 @@
+
+<!-- Estas son las plantillas que voy a utilizar se declararán más abajo-->
+<ng-template #headerdiv style="background-color: black;">
+        <nav class="navbar navbar-expand-sm bg-light">
+            <img src="assets/images/itexon_logo.png"/>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/apiweather">WEATHER</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/postapi">POSTS</a>
+              </li>
+            </ul>
+          </nav>
+  
+  
+  </ng-template>
+  <ng-template #menulateral>
+    <div class="c-sidebar c-sidebar-dark c-sidebar-show">
+      <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-title">Nav Title</li>
+        <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link" routeLink="#">
+            <i class="c-sidebar-nav-icon cil-speedometer"></i> Nav item
+          </a>
+        </li>
+        <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link" routeLink="#">
+            <i class="c-sidebar-nav-icon cil-speedometer"></i> With badge
+            <span class="badge badge-primary">NEW</span>
+          </a>
+        </li>
+        <li class="c-sidebar-nav-item nav-dropdown">
+          <a class="c-sidebar-nav-link nav-dropdown-toggle" href="#">
+            <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown
+          </a>
+          <ul class="c-sidebar-nav-dropdown-items">
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" routeLink="#">
+                <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown item
+              </a>
+            </li>
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" routeLink="#">
+                <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown item
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="c-sidebar-nav-item mt-auto">
+          <a class="c-sidebar-nav-link c-sidebar-nav-link-success" routeLink="https://coreui.io">
+            <i class="c-sidebar-nav-icon cil-cloud-download"></i> Download CoreUI</a>
+        </li>
+        <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link c-sidebar-nav-link-danger" routeLink="https://coreui.io/pro/">
+            <i class="c-sidebar-nav-icon cil-layers"></i> Try CoreUI
+            <strong>PRO</strong>
+          </a>
+        </li>
+      </ul>
+      <button class="c-sidebar-minimizer c-brand-minimizer" type="button"></button>
+    </div>
+  </ng-template>
+    
+  
+  <ng-template #footer>
+    <div class="footer">
+      <span class="col-4">texto1</span>
+      <span class=cold-4>texto2</span>
+      <span></span>
+    </div>
+  </ng-template>
+  <ng-template let-message="Mensaje" #apitemplate>
+      <div>
+      <table class="table table-striped table-light table-hover table-bordered table-responsive" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        <caption><h1>{{datos.product}} {{datos.init}}</h1></caption>
+        <thead class="table thead th table-secondary-hover">
+        <tr>
+          <th>TimePoint</th>
+          <th>Cloudcover</th>
+          <th>Seeing</th>
+          <th>Transparency</th>
+          <th>Lifted_index</th>
+          <th>Rh2m</th>
+          <th>Wind10m</th>
+          <th>Temp2m</th>
+          <th>Prec_type</th>
+        </tr>
+      </thead>
+      <tbody class="tbody + tbody">
+        <tr *ngFor="let serie of datos.dataseries">
+          <th>{{serie.timepoint}}</th>
+          <th>{{serie.cloudcover}}</th>
+          <th>{{serie.seeing}}</th>
+          <th>{{serie.transparency}}</th>
+          <th>{{serie.lifted_index}}</th>
+          <th>{{serie.rh2m}}</th>
+          <th>{{serie.wind10m.direction}} {{serie.wind10m.speed}}</th>
+          <th>{{serie.temp2m}}</th>
+          <th>{{serie.prec_type}}</th>
+        </tr>
+      </tbody>
+      </table>
+    
+    </div>
+  </ng-template>
+  
+  
+  <ng-container *ngIf="template == 'header'">
+    <div *ngTemplateOutlet="headerdiv"></div>
+  
+  </ng-container>
+
+  <ng-container *ngIf="template == 'apiweather'">
+    <div *ngTemplateOutlet="apitemplate"></div>
+  </ng-container>
+
+  <ng-container *ngIf="template == 'menulateral'">
+    <div *ngTemplateOutlet="menulateral"></div>
+  </ng-container>
+
+  <ng-container *ngIf="template == 'footer'">
+   <div *ngTemplateOutlet="footer"></div>
+  </ng-container>

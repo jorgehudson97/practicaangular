@@ -1,0 +1,29 @@
+<ng-template #aprest2>
+    <div>
+        <table class="table table-striped table-light table-hover table-bordered table-responsive" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            <caption><h1>POSTS</h1></caption>
+            <thead class="table thead th table-secondary-hover">
+                <th>UserID</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Body</th>
+                
+              </thead>
+              <tbody class="tbody + tbody">
+                <tr *ngFor="let post of posts">
+                    <th>{{post.userId}}</th>
+                    <th>{{post.id}}</th>
+                    <th>{{post.title}}</th>
+                    <th>{{post.body}}</th>
+                </tr>
+                
+              </tbody>
+        </table>
+
+    
+    </div>
+</ng-template>
+
+<div *ngTemplateOutlet="aprest2"></div>
+<app-plantillas [template]="'menulateral'"></app-plantillas>
+<app-plantillas [template]="'footer'"></app-plantillas>
